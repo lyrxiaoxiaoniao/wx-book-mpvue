@@ -44,9 +44,9 @@ export default {
 .progressbar {
   text-align: center;
   width: 100%;
-  margin: 20rpx 0 80rpx;
+  margin: 10px 0 40px;
   progress {
-    margin-bottom: 20rpx;
+    margin-bottom: 10px;
   }
 }
 </style>

@@ -14,8 +14,9 @@ function request(url, method, data) {
       url: config.host + url,
       success: function(res) {
         if (res.data.code === 0) {
-          resolve(res.data)
+          resolve(res.data.data)
         } else {
+          showModel('失败', res.data.data.msg)
           reject(res.data)
         }
       }

@@ -39,14 +39,11 @@ export default {
   },
   methods: {
     async addBook(isbn) {
-      console.log(this.userinfo, 'this.userinfo')
       const res = await post('/weapp/addbook', {
         isbn,
         openid: this.userinfo.openId
       })
-      if (res.code === 0 && res.data.title) {
-        showSuccess('添加成功', `res.data.title`)
-      }
+      showModel('添加成功', `${res.title}添加成功`)
     },
     scanBook() {
       wx.scanCode({
@@ -145,15 +142,15 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 0 30rpx;
+  padding: 0 15px;
 }
 .userinfo {
-  margin-top: 100rpx;
+  margin-top: 50px;
   text-align: center;
   img {
-    width: 150rpx;
-    height: 150rpx;
-    margin: 20rpx;
+    width: 75px;
+    height: 75px;
+    margin: 10px;
     border-radius: 50%;
   }
   button {
