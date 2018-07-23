@@ -2,7 +2,7 @@
   <a :href="detailUrl">
     <div class="book-card">
       <div class="thumb">
-        <img :src="book.image" mode="aspectFit" class="image">
+        <img @click.stop="showImg(book)" :src="book.image" mode="aspectFit" class="image">
       </div>
       <div class="detail">
         <div class="row text-primary">
@@ -30,6 +30,14 @@ export default {
   computed: {
     detailUrl() {
       return '/pages/bookDetail/main?id=' + this.book.id
+    }
+  },
+  methods: {
+    showImg(item) {
+      wx.previewImage({
+        current: item.image, // 当前显示图片的http链接
+        urls: [item.image] // 需要预览的图片http链接列表
+      })
     }
   }
 }

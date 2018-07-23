@@ -1,6 +1,6 @@
 <template>
   <div>
-    <swipe-card :books="topList"></swipe-card>
+    <swipe-card v-if="topList.length >=6" :books="topList"></swipe-card>
     <book-card v-for="item in books" :key="item.id" :book="item"></book-card>
     <p class="text-footer" v-if="!more">
       没有更多数据
@@ -44,7 +44,7 @@ export default {
     async getTopList () {
       const topList = await get('/weapp/booktop')
       this.topList = topList.list
-      console.log(topList, 'topList')
+      console.log(this.topList, 'topList')
     }
   },
   onPullDownRefresh() {
