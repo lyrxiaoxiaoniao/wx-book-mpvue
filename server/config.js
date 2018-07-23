@@ -1,13 +1,13 @@
 const CONF = {
-    serverHost: 'localhost',
-    tunnelServerUrl: '',
-    tunnelSignatureKey: '27fb7d1c161b7ca52d73cce0f1d833f9f5b5ec89',
-    // 腾讯云相关配置可以查看云 API 秘钥控制台：https://console.cloud.tencent.com/capi
-    qcloudAppId: '1257089001', // 您的腾讯云 AppID
-    qcloudSecretId: 'AKIDvgCSTJrqSowsYyp4i6F9qIUQ6WzFY6ey', // 您的腾讯云 SecretId
-    qcloudSecretKey: 'DCvObZHkxvfAQO7an22nIXXHn5A1dz95', // 您的腾讯云 SecretKey
-    wxMessageToken: 'weixinmsgtoken', // 下面 有一个 wxMessageToken
-    networkTimeout: 30000,
+    // serverHost: 'localhost',
+    // tunnelServerUrl: '',
+    // tunnelSignatureKey: '27fb7d1c161b7ca52d73cce0f1d833f9f5b5ec89',
+    // // 腾讯云相关配置可以查看云 API 秘钥控制台：https://console.cloud.tencent.com/capi
+    // qcloudAppId: '1257089001', // 您的腾讯云 AppID
+    // qcloudSecretId: 'AKIDvgCSTJrqSowsYyp4i6F9qIUQ6WzFY6ey', // 您的腾讯云 SecretId
+    // qcloudSecretKey: 'DCvObZHkxvfAQO7an22nIXXHn5A1dz95', // 您的腾讯云 SecretKey
+    // wxMessageToken: 'weixinmsgtoken', // 下面 有一个 wxMessageToken
+    // networkTimeout: 30000,
 
     port: '5757',
     rootPathname: '',
@@ -31,8 +31,8 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        // pass: 'wxe68a7cde5376660c', // 线上
-        pass: '', // 本地
+        pass: 'wxe68a7cde5376660c', // 线上
+        // pass: '', // 本地
         char: 'utf8mb4'
     },
 
