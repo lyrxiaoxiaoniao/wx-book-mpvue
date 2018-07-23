@@ -15,7 +15,7 @@ export default {
       '^pages/books/main',
       'pages/mine/main',
       'pages/counter/main',
-      'pages/books/main'
+      'pages/bookDetail/main'
     ],
     window: {
       backgroundTextStyle: 'light',

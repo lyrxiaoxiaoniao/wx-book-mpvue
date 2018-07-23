@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './index'
+import Counter from './index'
 
-const app = new Vue(App)
+const app = new Vue(Counter)
 app.$mount()

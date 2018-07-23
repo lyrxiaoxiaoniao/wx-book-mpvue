@@ -1,30 +1,37 @@
 <template>
-  <div class="book-card">
-    <div class="thumb">
-      <img :src="book.image" mode="scaleToll" class="image">
+  <a :href="detailUrl">
+    <div class="book-card">
+      <div class="thumb">
+        <img :src="book.image" mode="aspectFit" class="image">
+      </div>
+      <div class="detail">
+        <div class="row text-primary">
+          <div class="left">{{book.title}}</div>
+          <div class="right">{{book.rate}}<rate :value="book.rate"></rate></div>
+        </div>
+        <div class="row">
+          <div class="left">{{book.author}}</div>
+          <div class="right">浏览量：</div>
+        </div>
+        <div class="row">
+          <div class="left">{{book.publisher}}</div>
+          <div class="right">添加人：{{book.user_info.nickName}}</div>
+        </div>
+      </div>
     </div>
-    <div class="detail">
-      <div class="row text-primary">
-        <div class="left">{{book.title}}</div>
-        <div class="right">{{book.rate}}<rate :value="book.rate"></rate></div>
-      </div>
-      <div class="row">
-        <div class="left">{{book.author}}</div>
-        <div class="right">浏览量：</div>
-      </div>
-      <div class="row">
-        <div class="left">{{book.publisher}}</div>
-        <div class="right">添加人：{{book.user_info.nickName}}</div>
-      </div>
-    </div>
-  </div>
+  </a>
 </template>
 
 <script>
 import Rate from './Rate'
 export default {
   props: ['book'],
-  components: { Rate }
+  components: { Rate },
+  computed: {
+    detailUrl() {
+      return '/pages/bookDetail/main?id=' + this.book.id
+    }
+  }
 }
 </script>
 
