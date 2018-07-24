@@ -13,7 +13,7 @@
               mode="aspectFit"
               v-for="item in imgdata"
               :key="item.id"
-              class="swiper-img" 
+              class="swiper-img"
               :src="item.image"/>
           </swiper-item>
         </div>
@@ -27,8 +27,6 @@ export default {
   computed: {
     bookList() {
       let books = this.books
-      console.log(books.slice(0, 3))
-      console.log(books)
       return [books.slice(0, 3), books.slice(3)]
     }
   },

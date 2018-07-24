@@ -30,10 +30,7 @@ module.exports = async ctx => {
             await mysql('books').insert({
                 isbn, openid, rate, title, image, alt, publisher, summary, price, tags, author
             })
-            ctx.state.data = {
-                ...bookData,
-                msg: 'success'
-            }
+            ctx.state.data = bookData
         } catch (err) {
             ctx.state = {
                 code: -1,

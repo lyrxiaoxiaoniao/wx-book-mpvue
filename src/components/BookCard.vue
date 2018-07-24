@@ -11,11 +11,11 @@
         </div>
         <div class="row">
           <div class="left">{{book.author}}</div>
-          <div class="right">浏览量：</div>
+          <div class="right">浏览量：{{book.count}}</div>
         </div>
         <div class="row">
           <div class="left">{{book.publisher}}</div>
-          <div class="right">添加人：{{book.user_info.nickName}}</div>
+          <div class="right">{{book.user_info.nickName}}</div>
         </div>
       </div>
     </div>
@@ -66,6 +66,20 @@ export default {
       font-size: 14px;
       display: flex;
       justify-content: space-between;
+      .left {
+        display: inline-block;
+        flex: 1;
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+      .right {
+        width: 90px;
+      }
     }
   }
 }
