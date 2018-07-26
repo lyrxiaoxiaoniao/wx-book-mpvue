@@ -1,46 +1,70 @@
 <template>
   <div class="counter-warp">
-    <p>Vuex counter：{{ count }}</p>
-    <p>
-      <button @click="increment">+</button>
-      <button @click="decrement">-</button>
+    <book-card v-for="item in books" :key="item.id" :book="item"></book-card>
+    <p class="text-footer" v-if="!more">
+      没有更多数据
     </p>
-
-    <a href="/pages/index/main" class="home">去往首页</a>
   </div>
 </template>
 
 <script>
-// Use Vuex
-import store from './store'
-
+import qcloud from 'wafer2-client-sdk'
+import { get } from '@/api.js'
+import BookCard from '@/components/BookCard.vue'
 export default {
-  computed: {
-    count () {
-      return store.state.count
+  data() {
+    return {
+      books: [],
+      userInfo: {},
+      page: 0,
+      more: true
     }
   },
-  methods: {
-    increment () {
-      store.commit('increment')
-    },
-    decrement () {
-      store.commit('decrement')
+  components: { BookCard },
+  mounted() {
+    const session = qcloud.Session.get()
+    console.log(session, 'session')
+    if (session) {
+      this.userInfo = session.userinfo
+      this.getBookList(true)
     }
+    wx.setNavigationBarTitle({
+      title: '我的书库'
+    })
+  },
+  methods: {
+    async getBookList(init) {
+      if (init) {
+        this.page = 0
+        this.more = true
+      }
+      wx.showNavigationBarLoading()
+      const books = await get('/weapp/booklist', {
+        page: this.page,
+        openid: this.userInfo.openId
+      })
+      if (books.list.length < 10 && this.page >= 0) {
+        this.more = false
+      }
+      if (init) {
+        this.books = books.list
+        wx.stopPullDownRefresh()
+      } else {
+        this.books = this.books.concat(books.list)
+      }
+      wx.hideNavigationBarLoading()
+    }
+  },
+  onPullDownRefresh() {
+    this.getBookList(true)
+  },
+  onReachBottom() {
+    if (!this.more) return
+    this.page += 1
+    this.getBookList()
   }
 }
 </script>
 
-<style>
-.counter-warp {
-  text-align: center;
-  margin-top: 100px;
-}
-.home {
-  display: inline-block;
-  margin: 100px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
+<style lang="scss" scoped>
 </style>

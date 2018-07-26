@@ -47,9 +47,11 @@ export default {
       console.log(this.topList, 'topList')
     }
   },
+  // 下拉刷新函数
   onPullDownRefresh() {
     this.getList(true)
   },
+  // 触底函数
   onReachBottom() {
     if (!this.more) return
     this.page += 1
