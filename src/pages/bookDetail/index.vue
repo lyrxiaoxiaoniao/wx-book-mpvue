@@ -16,7 +16,7 @@ export default {
     async getDetail() {
       const detail = await get('/weapp/bookdetail', { id: this.id })
       wx.setNavigationBarTitle({
-        title: detail.data.title
+        title: detail.title
       })
       console.log(detail, 'detail')
     }
